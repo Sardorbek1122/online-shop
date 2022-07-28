@@ -2,8 +2,10 @@ import './Card.scss';
 import React from 'react';
 import { formatCurrency } from '../../Use/formatCurrency';
 import 'bulma';
+import { useShoppingCart } from '../../Context/ShoppingCartContext';
 
 type Props = {
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -12,10 +14,16 @@ type Props = {
 
 export const Card: React.FC<Props> = (
   {
-    title, price, description, image,
+    id, title, price, description, image,
   }:Props,
 ) => {
-  const quantity = 1;
+  const {
+    getItemQuentity,
+    increaseCartQuentity,
+    decreaseCartQuentity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity = getItemQuentity(id);
 
   return (
     <div className="card">
@@ -25,18 +33,38 @@ export const Card: React.FC<Props> = (
       <p>{description}</p>
 
       {quantity === 1 ? (
-        <button type="button">+ Add</button>
+        <button
+          type="button"
+          onClick={() => increaseCartQuentity(id)}
+        >
+          + Add
+        </button>
       ) : (
         <div>
           <div>
-            <button type="button">-</button>
+            <button
+              type="button"
+              onClick={() => decreaseCartQuentity(id)}
+            >
+              -
+            </button>
             <div>
               <span>{quantity}</span>
               in cart
             </div>
-            <button type="button">+</button>
+            <button
+              type="button"
+              onClick={() => increaseCartQuentity(id)}
+            >
+              +
+            </button>
           </div>
-          <button type="button">Remove</button>
+          <button
+            type="button"
+            onClick={() => removeFromCart(id)}
+          >
+            Remove
+          </button>
         </div>
       )}
     </div>
