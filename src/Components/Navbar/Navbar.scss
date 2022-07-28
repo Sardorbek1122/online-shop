@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  border-bottom: 3px solid red;
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link {
+    margin: auto 15px;
+    font-size: 26px;
+  }
+
+  &__btn {
+    position: relative;
+    border-radius: 50%;
+    height: 40px;
+  }
+
+  &__item-counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: red solid 2px;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(25% 25%);
+  }
+}
