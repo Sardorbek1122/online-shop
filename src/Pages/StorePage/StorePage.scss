@@ -1,0 +1,14 @@
+.wrapper__card{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.card-itself {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+  border: 3px solid red;
+  height: 700px;
+  width: 400px;
+}
