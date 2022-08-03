@@ -8,13 +8,12 @@ type Props = {
   id: number;
   title: string;
   price: number;
-  description: string;
   image: string;
 };
 
 export const Card: React.FC<Props> = (
   {
-    id, title, price, description, image,
+    id, title, price, image,
   }:Props,
 ) => {
   const {
@@ -30,7 +29,6 @@ export const Card: React.FC<Props> = (
       <img src={image} alt="/" className="card" />
       <h1>{title}</h1>
       <p>{formatCurrency(price)}</p>
-      <p>{description}</p>
 
       {quantity === 1 ? (
         <button
@@ -40,8 +38,8 @@ export const Card: React.FC<Props> = (
           + Add
         </button>
       ) : (
-        <div>
-          <div>
+        <div className="card__container">
+          <div className="card__container--button">
             <button
               type="button"
               onClick={() => decreaseCartQuentity(id)}
